@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const pool = require('../database/index.js');
 const { get } = require('./controllers.js');
 // middleware
 app.use(express.json());
