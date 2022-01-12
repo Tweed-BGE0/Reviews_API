@@ -7,7 +7,12 @@ const pool = new Pool({
   host: 'localhost',
   database: 'test_2',
   password: 'pgadmin',
-  port: 5432
+  port: 5432,
 });
 
-module.exports = pool;
+// get all reviews from database
+const getAllReviews = () => {
+  return pool.query('SELECT * from test_table_1');
+};
+
+module.exports = { pool, getAllReviews };
