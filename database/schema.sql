@@ -1,109 +1,92 @@
-DROP DATABASE IF EXISTS test_6;
-CREATE DATABASE test_6;
--- USE test_1;
-\c test_6;
+DROP DATABASE IF EXISTS reviews;
+CREATE DATABASE reviews;
+\c reviews;
 
-DROP TABLE test_table_1 CASCADE;
--- DROP TABLE IF EXISTS test_table_1;
-CREATE TABLE test_table_1 (
-  id SERIAL,
-  name TEXT NOT NULL,
-  PRIMARY KEY (id)
-);
-
-INSERT INTO test_table_1 (name) VALUES ('Charizard');
-
-
-DROP TABLE reviews2 CASCADE;
--- DROP TABLE IF EXISTS reviews2;
-CREATE TABLE reviews2 (
+-- ---
+-- Table 'reviews'
+--
+-- ---
+DROP TABLE reviews CASCADE;
+CREATE TABLE reviews (
 id SERIAL,
 product_id INT NOT NULL,
 rating INT NOT NULL,
-summary VARCHAR(1000) NOT NULL,
-recommend BOOLEAN,
-response VARCHAR(1000),
-body VARCHAR(1000) NOT NULL,
 date VARCHAR(1000) NOT NULL,
+summary VARCHAR(1000) NOT NULL,
+body VARCHAR(1000) NOT NULL,
+recommend BOOLEAN,
+reported boolean NOT NULL,
 reviewer_name VARCHAR(1000),
+reviewer_email VARCHAR(1000),
+response VARCHAR(1000),
 helpfulness INT NOT NULL,
 PRIMARY KEY (id)
 );
--- INSERT INTO `reviews2` (`product_id`,`rating`,`summary`,`recommend`,`body`,`date`,`reviewer_name`,`helpfulness`) VALUES (5, 5,'mysum',true,'okay','testing','again','reviewernamend', 8);
+
+COPY reviews(id, product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness)
+FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/reviews.csv'
+DELIMITER ','
+CSV HEADER;
+
 -- ---
 -- Table 'photos'
 --
 -- ---
 
-DROP TABLE photos2 CASCADE;
--- DROP TABLE IF EXISTS photos2;
-CREATE TABLE photos2 (
+DROP TABLE IF EXISTS photos CASCADE;
+CREATE TABLE photos (
   id SERIAL,
+  review_id INT NOT NULL,
   url VARCHAR(1000) NOT NULL,
   PRIMARY KEY (id)
 );
 
--- ---
--- Table 'review_photo'
---
--- ---
-
-DROP TABLE review_photo2 CASCADE;
--- DROP TABLE IF EXISTS review_photo2;
-CREATE TABLE review_photo2 (
-  id SERIAL,
-  rp_review INT NOT NULL,
-  rp_photo INT NOT NULL,
-  PRIMARY KEY (id)
-);
+COPY photos(id, review_id, url)
+FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/reviews_photos.csv'
+DELIMITER ','
+CSV HEADER;
 
 -- ---
 -- Table 'characteristics'
 --
 -- ---
 
-DROP TABLE characteristics2 CASCADE;
-CREATE TABLE characteristics2 (
+DROP TABLE IF EXISTS characteristics CASCADE;
+CREATE TABLE characteristics (
   id SERIAL,
+  product_id INT NOT NULL,
   name VARCHAR(1000) NOT NULL,
-  value VARCHAR(1000) NOT NULL,
   PRIMARY KEY (id)
 );
+
+COPY characteristics(id, product_id, name)
+FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/characteristics.csv'
+DELIMITER ','
+CSV HEADER;
 
 -- ---
 -- Table 'review_characteristic'
 --
 -- ---
 
-DROP TABLE review_characteristic2 CASCADE;
-CREATE TABLE review_characteristic2 (
+DROP TABLE IF EXISTS review_characteristic CASCADE;
+CREATE TABLE review_characteristic (
   id SERIAL,
-  rc_review INT NOT NULL,
-  rc_characteristic INT NOT NULL,
+  characteristic_id INT NOT NULL,
+  review_id INT NOT NULL,
+  value VARCHAR(1000) NOT NULL,
   PRIMARY KEY (id)
 );
 
+COPY review_characteristic(id, characteristic_id, review_id, value)
+FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/characteristic_reviews.csv'
+DELIMITER ','
+CSV HEADER;
 
 -- ---
 -- Foreign Keys
 -- ---
 
-ALTER TABLE review_photo2 ADD FOREIGN KEY (rp_review) REFERENCES reviews2 (id);
-ALTER TABLE review_photo2 ADD FOREIGN KEY (rp_photo) REFERENCES photos2 (id);
-ALTER TABLE review_characteristic2 ADD FOREIGN KEY (rc_review) REFERENCES reviews2 (id);
-ALTER TABLE review_characteristic2 ADD FOREIGN KEY (rc_characteristic) REFERENCES characteristics2 (id);
-
--- ---
--- Test Data
--- ---
-
--- INSERT INTO `reviews2` (`id`,`product_id`,`rating`,`summary`,`recommend`,`body`,`date`,`reviewer_name`,`helpfulness`) VALUES
--- ('','','','','','','','','');
--- INSERT INTO `photos` (`id`,`url`) VALUES
--- ('','');
--- INSERT INTO `review_photo` (`id`,`rp_review`,`rp_photo`) VALUES
--- ('','','');
--- INSERT INTO `characteristics` (`id`,`name`,`value`) VALUES
--- ('','','');
--- INSERT INTO `review_characteristic` (`id`,`rc_review`,`rc_characteristic`) VALUES
--- ('','','');
+ALTER TABLE photos ADD FOREIGN KEY (review_id) REFERENCES reviews (id);
+ALTER TABLE review_characteristic ADD FOREIGN KEY (review_id) REFERENCES reviews (id);
+ALTER TABLE review_characteristic ADD FOREIGN KEY (characteristic_id) REFERENCES characteristics (id);

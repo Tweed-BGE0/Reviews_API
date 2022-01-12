@@ -5,7 +5,7 @@ const { Pool, Client } = require('pg');
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'test_6',
+  database: 'test_9',
   password: 'pgadmin',
   port: 5432,
 });
@@ -21,7 +21,7 @@ pool
 
 // get all reviews from database
 const getAllReviews = () => {
-  return pool.query('SELECT * from test_table_1');
+  return pool.query('SELECT * from characteristics2');
 };
 
 module.exports = { getAllReviews };
