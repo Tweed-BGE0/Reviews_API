@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS reviews;
-CREATE DATABASE reviews;
-\c reviews;
+DROP DATABASE IF EXISTS reviews2;
+CREATE DATABASE reviews2;
+\c reviews2;
 
 -- ---
 -- Table 'reviews'
@@ -15,7 +15,7 @@ date VARCHAR(1000) NOT NULL,
 summary VARCHAR(1000) NOT NULL,
 body VARCHAR(1000) NOT NULL,
 recommend BOOLEAN,
-reported boolean NOT NULL,
+reported BOOLEAN NOT NULL,
 reviewer_name VARCHAR(1000),
 reviewer_email VARCHAR(1000),
 response VARCHAR(1000),
@@ -23,10 +23,10 @@ helpfulness INT NOT NULL,
 PRIMARY KEY (id)
 );
 
-COPY reviews(id, product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness)
-FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/reviews.csv'
-DELIMITER ','
-CSV HEADER;
+-- COPY reviews(id, product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness)
+-- FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/reviews.csv'
+-- DELIMITER ','
+-- CSV HEADER;
 
 -- ---
 -- Table 'photos'
@@ -41,10 +41,10 @@ CREATE TABLE photos (
   PRIMARY KEY (id)
 );
 
-COPY photos(id, review_id, url)
-FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/reviews_photos.csv'
-DELIMITER ','
-CSV HEADER;
+-- COPY photos(id, review_id, url)
+-- FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/reviews_photos.csv'
+-- DELIMITER ','
+-- CSV HEADER;
 
 -- ---
 -- Table 'characteristics'
@@ -59,10 +59,10 @@ CREATE TABLE characteristics (
   PRIMARY KEY (id)
 );
 
-COPY characteristics(id, product_id, name)
-FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/characteristics.csv'
-DELIMITER ','
-CSV HEADER;
+-- COPY characteristics(id, product_id, name)
+-- FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/characteristics.csv'
+-- DELIMITER ','
+-- CSV HEADER;
 
 -- ---
 -- Table 'review_characteristic'
@@ -78,10 +78,10 @@ CREATE TABLE review_characteristic (
   PRIMARY KEY (id)
 );
 
-COPY review_characteristic(id, characteristic_id, review_id, value)
-FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/characteristic_reviews.csv'
-DELIMITER ','
-CSV HEADER;
+-- COPY review_characteristic(id, characteristic_id, review_id, value)
+-- FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/characteristic_reviews.csv'
+-- DELIMITER ','
+-- CSV HEADER;
 
 -- ---
 -- Foreign Keys

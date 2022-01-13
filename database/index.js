@@ -1,11 +1,12 @@
 const { Pool, Client } = require('pg');
+const { parseCharacteristicReviews } = require('./readFiles.js');
 
 // pools will use environment variables
 // for connection information
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'test_9',
+  database: 'reviews2',
   password: 'pgadmin',
   port: 5432,
 });
@@ -21,7 +22,8 @@ pool
 
 // get all reviews from database
 const getAllReviews = () => {
-  return pool.query('SELECT * from characteristics2');
+  console.log(parseCharacteristicReviews());
+  // return pool.query('SELECT * from characteristics2');
 };
 
 module.exports = { getAllReviews };
