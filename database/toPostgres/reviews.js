@@ -3,12 +3,12 @@ var readline = require('readline');
 // const path = require('path');
 const { Pool, Client } = require('pg');
 
-pools will use environment variables
-for connection information
+// pools will use environment variables
+// for connection information
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'reviews2',
+  database: 'reviews3',
   password: 'pgadmin',
   port: 5432,
 });
@@ -44,7 +44,7 @@ const processLineByLine = () => {
           ? 'NULL'
           : `'${row[10].replace(/(^"|"$)/g, '').replace(/"/g, "'")}'`;
 
-      let query = `INSERT INTO characteristics (id, product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness) VALUES (${Number(
+      let query = `INSERT INTO reviews (id, product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness) VALUES (${Number(
         row[0]
       )}, ${Number(row[1])}, ${Number(row[2])}, '${row[3]
         .replace(/(^"|"$)/g, '')
@@ -58,6 +58,18 @@ const processLineByLine = () => {
         .replace(/(^"|"$)/g, '')
         .replace(/"/g, "'")}', ${response}, ${Number(row[11])})`;
       console.log(query);
+      pool.query(query, (err, data) => {
+        if (err) {
+          console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+          console.log(err);
+          console.log(query);
+          console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+        } else {
+          // console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+          console.log(data);
+          // console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+        }
+      });
     }
     count++;
   });

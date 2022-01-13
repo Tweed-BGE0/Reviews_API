@@ -18,7 +18,7 @@ const processLineByLine = () => {
     let dataArray = line.split(/\r?\n/);
     let row = dataArray.toString().split(',');
     if (count > 0) {
-      let query = `INSERT INTO characteristics (id, characteristic_id, review_id, value) VALUES (${Number(
+      let query = `INSERT INTO review_characteristic (id, characteristic_id, review_id, value) VALUES (${Number(
         row[0]
       )}, ${Number(row[1])}, ${Number(row[2])}, '${row[3]
         .replace(/(^"|"$)/g, '')
