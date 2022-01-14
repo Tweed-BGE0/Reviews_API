@@ -1,12 +1,11 @@
 var fs = require('fs');
 var readline = require('readline');
-// const path = require('path');
 const { Pool, Client } = require('pg');
 
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'reviews9',
+  database: 'reviews',
   password: 'pgadmin',
   port: 5432,
 });
@@ -22,7 +21,7 @@ pool
 
 const processLineByLine = () => {
   const fileStream = fs.createReadStream(
-    '/Users/developer/Desktop/testing/xx_small_xx/characteristic_reviews/characteristic_reviews_test_small.csv'
+    '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/characteristic_reviews.csv'
   );
 
   const rl = readline.createInterface({
@@ -48,13 +47,12 @@ const processLineByLine = () => {
 
       batch.push(values);
 
-      if (count === 7) {
+      if (count === 999) {
         pool.query(query + batch.join(', '), (err, data) => {
           if (err) {
             console.log(err);
-            console.log('error error');
           } else {
-            console.log('good data');
+            // console.log('good data');
           }
         });
         batch = [];
@@ -76,15 +74,3 @@ const processLineByLine = () => {
 };
 
 processLineByLine();
-
-// .replace()
-
-// split -l 10 reviews_photos.csv test
-// cat testaa > reviews_photos_test_small.csv
-
-// id SERIAL,
-// characteristic_id INT NOT NULL,
-// review_id INT NOT NULL,
-// value VARCHAR(1000) NOT NULL,
-
-/*

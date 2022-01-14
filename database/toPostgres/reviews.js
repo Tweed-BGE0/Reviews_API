@@ -5,7 +5,7 @@ const { Pool, Client } = require('pg');
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'reviews9',
+  database: 'reviews',
   password: 'pgadmin',
   port: 5432,
 });
@@ -74,7 +74,7 @@ const processLineByLine = () => {
           if (err) {
             console.log('error batch try', err);
           } else {
-            console.log('good data');
+            // console.log('good data');
           }
         });
         batch = [];
@@ -95,6 +95,3 @@ const processLineByLine = () => {
 };
 
 processLineByLine();
-
-// split -l 10 reviews_photos.csv test
-// cat testaa > reviews_photos_test_small.csv

@@ -6,7 +6,7 @@ const { parseCharacteristicReviews } = require('./readFiles.js');
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'reviews2',
+  database: 'reviews',
   password: 'pgadmin',
   port: 5432,
 });

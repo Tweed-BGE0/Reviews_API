@@ -1,12 +1,11 @@
 var fs = require('fs');
 var readline = require('readline');
-// const path = require('path');
 const { Pool, Client } = require('pg');
 
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'reviews9',
+  database: 'reviews',
   password: 'pgadmin',
   port: 5432,
 });
@@ -45,12 +44,12 @@ const processLineByLine = () => {
         .replace(/"/g, "'")}')`;
 
       batch.push(values);
-      if (count === 7) {
+      if (count === 999) {
         pool.query(query + batch.join(', '), (err, data) => {
           if (err) {
             console.log(err);
           } else {
-            console.log('good data');
+            // console.log('good data');
           }
         });
         batch = [];
@@ -72,16 +71,3 @@ const processLineByLine = () => {
 };
 
 processLineByLine();
-
-// .replace()
-
-// split -l 10 reviews_photos.csv test
-// cat testaa > reviews_photos_test_small.csv
-
-// id SERIAL,
-// product_id INT NOT NULL,
-// name VARCHAR(1000) NOT NULL,
-// PRIMARY KEY (id)
-
-// remove start and ending quotes.... then replace double quotes with single quotes
-// someStr.replace(/(^"|"$)/g, '').replace(/"/g, "'")

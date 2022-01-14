@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS reviews9;
-CREATE DATABASE reviews9;
-\c reviews9;
+DROP DATABASE IF EXISTS reviews;
+CREATE DATABASE reviews;
+\c reviews;
 
 -- ---
 -- Table 'reviews'
