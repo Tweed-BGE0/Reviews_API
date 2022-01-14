@@ -22,7 +22,7 @@ pool
 
 const processLineByLine = () => {
   const fileStream = fs.createReadStream(
-    '/Users/developer/Desktop/testing/xx_small_xx/characteristics/characteristics_test_small.csv'
+    '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/characteristics.csv'
   );
 
   const rl = readline.createInterface({

@@ -22,7 +22,7 @@ pool
 
 const processLineByLine = () => {
   const fileStream = fs.createReadStream(
-    '/Users/developer/Desktop/testing/xx_small_xx/photos/reviews_photos_test_small.csv'
+    '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/reviews_photos.csv'
   );
 
   const rl = readline.createInterface({
@@ -73,16 +73,6 @@ const processLineByLine = () => {
 };
 
 processLineByLine();
-
-// .replace()
-
-// split -l 10 reviews_photos.csv test
-// cat testaa > reviews_photos_test_small.csv
-
-// id SERIAL,
-// review_id INT NOT NULL,
-// url VARCHAR(1000) NOT NULL,
-// PRIMARY KEY (id)
 
 // split -l 20 reviews_a.csv test
 // cat testaa > reviews_photos_test_small2.csv
