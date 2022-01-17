@@ -23,10 +23,19 @@ helpfulness INT NOT NULL,
 PRIMARY KEY (id)
 );
 
+CREATE INDEX idx_reviews_product_id
+ON reviews(product_id);
+
+CREATE INDEX idx_reviews_reviews_id
+ON reviews(id);
+
 -- COPY reviews(id, product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness)
 -- FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/reviews.csv'
 -- DELIMITER ','
 -- CSV HEADER;
+
+-- CREATE INDEX idx_reviews_product ON reviews(product_id);
+-- DROP INDEX idx_reviews_product;
 
 -- ---
 -- Table 'photos'
@@ -40,6 +49,9 @@ CREATE TABLE photos (
   url VARCHAR(1000) NOT NULL,
   PRIMARY KEY (id)
 );
+
+CREATE INDEX idx_photos_review_id
+ON photos(review_id);
 
 -- COPY photos(id, review_id, url)
 -- FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/reviews_photos.csv'
@@ -59,6 +71,9 @@ CREATE TABLE characteristics (
   PRIMARY KEY (id)
 );
 
+CREATE INDEX idx_characteristics_product_id
+ON characteristics(product_id);
+
 -- COPY characteristics(id, product_id, name)
 -- FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/characteristics.csv'
 -- DELIMITER ','
@@ -74,9 +89,15 @@ CREATE TABLE review_characteristic (
   id SERIAL,
   characteristic_id INT NOT NULL,
   review_id INT NOT NULL,
-  value VARCHAR(1000) NOT NULL,
+  value INT NOT NULL,
   PRIMARY KEY (id)
 );
+
+CREATE INDEX idx_review_characteristic_characteristic_id
+ON review_characteristic(characteristic_id);
+
+CREATE INDEX idx_review_characteristic_review_id
+ON review_characteristic(review_id);
 
 -- COPY review_characteristic(id, characteristic_id, review_id, value)
 -- FROM '/Users/developer/Desktop/hack_reactor/bootcamp/SDC/data/characteristic_reviews.csv'

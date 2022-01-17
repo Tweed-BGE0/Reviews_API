@@ -1,5 +1,5 @@
 const { Pool, Client } = require('pg');
-const { parseCharacteristicReviews } = require('./readFiles.js');
+// const { parseCharacteristicReviews } = require('./readFiles.js');
 
 // pools will use environment variables
 // for connection information
@@ -20,10 +20,4 @@ pool
     console.log('err: ', err);
   });
 
-// get all reviews from database
-const getAllReviews = () => {
-  console.log(parseCharacteristicReviews());
-  // return pool.query('SELECT * from characteristics2');
-};
-
-module.exports = { getAllReviews };
+module.exports = pool;
