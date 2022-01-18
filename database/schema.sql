@@ -34,9 +34,6 @@ ON reviews(id);
 -- DELIMITER ','
 -- CSV HEADER;
 
--- CREATE INDEX idx_reviews_product ON reviews(product_id);
--- DROP INDEX idx_reviews_product;
-
 -- ---
 -- Table 'photos'
 --

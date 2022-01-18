@@ -1,8 +1,5 @@
 const { Pool, Client } = require('pg');
-// const { parseCharacteristicReviews } = require('./readFiles.js');
 
-// pools will use environment variables
-// for connection information
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
