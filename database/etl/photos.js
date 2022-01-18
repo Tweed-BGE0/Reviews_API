@@ -51,7 +51,7 @@ const processLineByLine = () => {
           if (err) {
             console.log(err);
           } else {
-            // console.log('good data');
+            console.log('added batch');
           }
         });
         batch = [];
@@ -65,7 +65,7 @@ const processLineByLine = () => {
       if (err) {
         console.log('error running last batch', err);
       } else {
-        console.log('AGAIN!, GOOD DATA');
+        console.log('last batch completed!');
       }
     });
   });
