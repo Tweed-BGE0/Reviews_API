@@ -5,7 +5,7 @@ const getReviews = (req, callback) => {
   let count = req.count || 5;
   let sort = req.sort || 'relevant';
   let product_id = req.product_id;
-  let requestSort = 'date DESC, helpfulness DESC';
+  let requestSort = 'helpfulness DESC, date DESC';
   if (sort === 'newest') requestSort = 'date DESC';
   if (sort === 'helpful') requestSort = 'helpfulness DESC';
 
