@@ -12,5 +12,5 @@ app.put('/reviews/:review_id/helpful', helpful);
 app.put('/reviews/:review_id/report', report);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at port ${port}`);
 });
