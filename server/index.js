@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const { get, getMetadata, add, report, helpful } = require('./controllers.js');
 // middleware
 app.use(express.json());
@@ -12,5 +12,5 @@ app.put('/reviews/:review_id/helpful', helpful);
 app.put('/reviews/:review_id/report', report);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at port ${port}`);
 });
