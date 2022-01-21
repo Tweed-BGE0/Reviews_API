@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const { get, getMetadata, add, report, helpful } = require('./controllers.js');
 // middleware
 app.use(express.json());
