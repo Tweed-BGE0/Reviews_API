@@ -1,8 +1,10 @@
 # Reviews API
+
 ```shell
 API that supports an existing e-commerce client.
 ```
-## Technologies
+
+## Tech Stack
 
 ```shell
 Node
@@ -21,6 +23,7 @@ npm start
 ```
 
 # REST API
+
 ```shell
 The REST API to the Reviews_API is described below.
 ```
@@ -193,7 +196,7 @@ Parameters
 
 ## Author
 
-👤 **Allen Alejandro**
+🔥 **Allen Alejandro**
 
 - LinkedIn: [@allen-alejandro](https://www.linkedin.com/in/allen-alejandro/)
 - Github: [@allen-alejandro](https://github.com/allen-alejandro)
