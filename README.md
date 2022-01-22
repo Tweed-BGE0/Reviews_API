@@ -1,7 +1,7 @@
 # Reviews API
-
+```shell
 API that supports an existing e-commerce client.
-
+```
 ## Technologies
 
 ```shell
