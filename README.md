@@ -21,8 +21,9 @@ npm start
 ```
 
 # REST API
-
+```shell
 The REST API to the Reviews_API is described below.
+```
 
 ## List Reviews
 
