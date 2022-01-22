@@ -9,6 +9,7 @@ API that supports an existing e-commerce client.
 ```shell
 Node.js
 Express
+Nodemon
 PostgreSQL
 Docker
 AWS (EC2)
