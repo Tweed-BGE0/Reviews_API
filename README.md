@@ -191,7 +191,7 @@ Parameters
 
 `Status: 204 NO CONTENT`
 
-## Authors
+## Author
 
 👤 **Allen Alejandro**
 
