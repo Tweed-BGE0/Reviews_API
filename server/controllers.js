@@ -31,7 +31,7 @@ const add = (req, res) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      res.send(data);
+      res.status(201).send('CREATED');
     }
   });
 };
@@ -41,7 +41,7 @@ const report = (req, res) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      res.send(data);
+      res.status(204).send('NO CONTENT');
     }
   });
 };
@@ -51,7 +51,7 @@ const helpful = (req, res) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      res.send(data);
+      res.status(204).send('NO CONTENT');
     }
   });
 };
