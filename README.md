@@ -7,7 +7,7 @@ API that supports an existing e-commerce client.
 ## Tech Stack
 
 ```shell
-Node
+Node.js
 Express
 PostgreSQL
 Docker
