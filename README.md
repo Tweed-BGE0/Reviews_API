@@ -5,12 +5,12 @@ API that supports an existing e-commerce client.
 ## Technologies
 
 ```shell
-- Node
-- Express
-- PostgreSQL
-- Docker
-- AWS (EC2)
-- K6
+Node
+Express
+PostgreSQL
+Docker
+AWS (EC2)
+K6
 ```
 
 ## Install
