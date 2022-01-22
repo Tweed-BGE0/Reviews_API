@@ -190,3 +190,10 @@ Parameters
 ### Response
 
 `Status: 204 NO CONTENT`
+
+## Authors
+
+👤 **Allen Alejandro**
+
+- LinkedIn: [@allen-alejandro](https://www.linkedin.com/in/allen-alejandro/)
+- Github: [@allen-alejandro](https://github.com/allen-alejandro)
